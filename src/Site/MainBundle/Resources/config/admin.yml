@@ -1,0 +1,52 @@
+# Site/MainBundle/Resources/config/admin.yml
+services:
+    sonata.admin.page:
+        class: Site\MainBundle\Admin\PageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Текстовые страницы" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Page
+            - ~
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]
+    sonata.admin.catalog:
+        class: Site\MainBundle\Admin\CatalogAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Каталог" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Catalog
+            - 'SiteMainBundle:CatalogAdmin'
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]
+    sonata.admin.portfolio:
+        class: Site\MainBundle\Admin\PortfolioAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Фото" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Portfolio
+            - 'SiteMainBundle:PortfolioAdmin'
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]
+    sonata.admin.factory:
+        class: Site\MainBundle\Admin\FactoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Производство" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Factory
+            - 'SiteMainBundle:FactoryAdmin'
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]
+    sonata.admin.image:
+        class: Site\MainBundle\Admin\ImageAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Изображения" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Image
+            - 'SiteMainBundle:ImageAdmin'
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]

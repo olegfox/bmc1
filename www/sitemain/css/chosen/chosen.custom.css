@@ -1,0 +1,47 @@
+.chosen-container{
+    vertical-align: top;
+}
+.chosen-container-single .chosen-single{
+    background: none;
+    border-radius: inherit;
+    border: none;
+    box-shadow: none;
+    color: #ff0000;
+    display: block;
+    overflow: hidden;
+    padding: 0 0 0 28px;
+    height: 25px;
+}
+.chosen-container{
+    font-family: 'Myriad Pro';
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+@media screen and (min-width:0\0) {
+    .chosen-container{
+        font-family: 'Myriad Pro Bold';
+    }
+}
+.chosen-container-active.chosen-with-drop .chosen-single{
+    border: none;
+    background: #eaeaea;
+    box-shadow: none;
+}
+.chosen-container .chosen-drop{
+    border: none;
+    border-top: 0;
+    background: #eaeaea;
+    box-shadow: none;
+}
+.chosen-result{
+    color: #fff!important;
+}
+.search-age .chosen-container-single .chosen-single span,
+.search-height .chosen-container-single .chosen-single span{
+    margin-right: 0px;
+}
+
+.chosen-container-single .chosen-single div b{
+    background: none;
+}

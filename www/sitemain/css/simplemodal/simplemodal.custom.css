@@ -1,0 +1,107 @@
+.simplemodal-show{
+    display: none;
+}
+#simplemodal-container .menu{
+    /*border-bottom: solid 2px #000;*/
+    height: 35px;
+    padding-left: 70px;
+}
+#simplemodal-container .body{
+    padding: 40px 70px 0px 86px;
+}
+#simplemodal-container .face{
+    display: inline-block;
+    vertical-align: top;
+}
+#simplemodal-container .description{
+    display: inline-block;
+    vertical-align: top;
+}
+#simplemodal-container .description{
+    font-family: "Myriad Pro";
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    left: 607px;
+    top: 155px;
+    margin-top: 0px;
+}
+#simplemodal-container .parse{
+    position: absolute;
+    left: 500px;
+    top: 400px;
+}
+@media screen and (min-width:0\0) {
+    #simplemodal-container .description{
+        font-family: 'Myriad Pro Bold';
+    }
+}
+#simplemodal-container .description div{
+    margin-bottom: 7px;
+}
+#simplemodal-container .menu div{
+    display: inline;
+    font-family: "Myriad Pro";
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 30px;
+    cursor: pointer;
+}
+@media screen and (min-width:0\0) {
+    #simplemodal-container .menu div{
+        font-family: 'Myriad Pro Bold';
+    }
+}
+#simplemodal-container .menu div:hover{
+    color: #ff0000;
+}
+#simplemodal-container {
+    background: url("/Sitemain/images/bg-show.jpg") repeat-x;
+    border: none;
+    color: #000;
+    width: 1070px;
+    height: 800px;
+    padding: 18px 25px 45px 25px;
+}
+@media screen and (min-width:0\0) {
+    #simplemodal-container{
+        padding: 21px 25px 45px 25px;
+    }
+}
+#simplemodal-container a.modalCloseImg {
+    width: 90px;
+    height: 17px;
+    background: url("/Sitemain/images/simplemodal/close.jpg") no-repeat;
+    position: absolute;
+    top: 30px;
+    right: 70px;
+}
+#simplemodal-overlay{
+    background: #00a2e0;
+}
+
+.simplemodal-show .border-left{
+    background: #444444;
+    width: 22px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.simplemodal-show .border-menu-show{
+    background: url("/Sitemain/images/border-menu-show.jpg") repeat-x;
+    height: 9px;
+    width: 100%;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    z-index: 0;
+}
+.simplemodal-show .position-player{
+    position: absolute;
+    left: 204px;
+    bottom: 55px;
+}

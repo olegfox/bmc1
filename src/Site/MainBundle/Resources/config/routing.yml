@@ -1,0 +1,12 @@
+Site_main_homepage:
+    pattern:  /
+    defaults: { _controller: SiteMainBundle:Main:index}
+
+Site_main_page:
+    pattern:  //{slug}/
+    defaults: { _controller: SiteMainBundle:Main:page}
+
+# Images uploading
+image_upload:
+    pattern:  /admin/image_upload/
+    defaults: { _controller: SiteMainBundle:Image:upload }

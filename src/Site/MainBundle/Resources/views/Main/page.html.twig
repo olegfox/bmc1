@@ -1,0 +1,34 @@
+{% extends 'SiteMainBundle::layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {% if slug == "kontaktyi" %}
+        <link href='//api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.css' rel='stylesheet'/>
+    {% endif %}
+{% endblock %}
+{% block search %}
+{% endblock %}
+{% block menu %}
+    {#{% if app.request.attributes.get('_route') == 'Site_main_Site_friends' or slug == 'Site_friends' %}#}
+        {#<div class="wrap-sub-menu">#}
+            {#<div class="sub-menu">#}
+                {#<a href="{{ path("Site_main_Site_friends", {"slug" : "o_nas"}) }}" {% if  app.request.get("slug") == "o_nas" %}class="selected"{% endif %}>о нас</a>#}
+                {#<a href="{{ path("Site_main_Site_friends", {"slug" : "komanda"}) }}" {% if  app.request.get("slug") == "komanda" %}class="selected"{% endif %}>команда</a>#}
+                {#<a href="{{ path("Site_main_Site_friends", {"slug" : "uslugi"}) }}" {% if  app.request.get("slug") == "uslugi" %}class="selected"{% endif %}>услуги</a>#}
+                {#<a href="{{ path("Site_main_Site_friends", {"slug" : "kontaktyi"}) }}" {% if  app.request.get("slug") == "kontaktyi" %}class="selected"{% endif %}>контакты</a>#}
+            {#</div>#}
+        {#</div>#}
+    {#{% endif %}#}
+{% endblock %}
+{% block content %}
+    {% if slug == "kontaktyi" %}
+        <div id='map'></div>
+    {% endif %}
+    {{ page.text|raw }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    {% if slug == "kontaktyi" %}
+        <script src='//api.tiles.mapbox.com/mapbox.js/v1.6.0/mapbox.js' type="text/javascript"></script>
+        <script src="{{ asset("sitemain/js/map/init_map.js") }}" type="text/javascript"></script>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link type="text/css" rel="stylesheet"
+          href="{{ asset('sitemain/css/bootstrap/dist/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="http://fonts.googleapis.com/css?family=Actor:400|Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic|Oswald:300|Source+Sans+Pro:200&subset=latin,cyrillic">
+    <link type="text/css" rel="stylesheet" href="{{ asset('sitemain/css/style.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('sitemain/css/flexslider.css') }}">
+    <link type="text/css" rel="stylesheet" href="{{ asset('sitemain/css/flexslider-custom.css') }}">
+    {% if mobile is defined and mobile %}
+        <link rel='stylesheet' type="text/css" href='{{ asset('sitemain/js/code.photoswipe-3.0.5/3.0.5/photoswipe.css') }} '></link>
+    {% endif %}
+{% endblock %}
+{% block body %}
+    {{ parent() }}
+    <div class="content">
+        <div class="logotip">
+            <img src="{{ asset("sitemain/images/logo.jpg") }}" width="1024px" height="399px" />
+        </div>
+        {% block content %}
+        {% endblock %}
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript" src="{{ asset('sitemain/js/jquery-1.10.2.min.js') }}"></script>
+    <script type="text/javascript"
+            src="{{ asset('sitemain/css/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sitemain/js/jquery.flexslider-min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sitemain/js/init_flexslider.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sitemain/js/gallery.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('sitemain/js/script.js') }}"></script>
+    {% if mobile is defined and mobile %}
+        <script type="text/javascript" src="{{ asset('sitemain/js/code.photoswipe-3.0.5/3.0.5/lib/klass.min.js') }} "></script>
+        <script type="text/javascript" src="{{ asset('sitemain/js/code.photoswipe-3.0.5/3.0.5/code.photoswipe.jquery-3.0.5.min.js') }}"></script>
+    {% endif %}
+{% endblock %}

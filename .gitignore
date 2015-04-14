@@ -1,0 +1,12 @@
+.idea/
+/app/bootstrap*
+/app/cache/*
+/app/logs/*
+/vendor/
+/app/config/parameters.yml
+*~
+*.log
+/tmp
+/www/uploads/*
+/www/bundles/*
+/www/cache/*
