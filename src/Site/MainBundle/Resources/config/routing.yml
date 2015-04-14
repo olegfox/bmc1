@@ -1,9 +1,17 @@
+Site_main_audio:
+    pattern:  /audio
+    defaults: { _controller: SiteMainBundle:Audio:index}
+
+Site_main_audio_json:
+    pattern:  /audio/json
+    defaults: { _controller: SiteMainBundle:Audio:json}
+
 Site_main_homepage:
     pattern:  /
     defaults: { _controller: SiteMainBundle:Main:index}
 
 Site_main_page:
-    pattern:  //{slug}/
+    pattern:  /{slug}/
     defaults: { _controller: SiteMainBundle:Main:page}
 
 # Images uploading

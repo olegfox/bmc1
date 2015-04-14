@@ -1,0 +1,16 @@
+<div class="audio" ng-controller="AudioController">
+    <div class="play-control">
+        <div class="prev" ng-click="playPrev()"><</div>
+        <div class="name"><span>{[{ currentPlaylist.audio[currentPlaylist.numberTrack].name }]}</span></div>
+        <div class="next" ng-click="playNext()">></div>
+    </div>
+    <div class="logo"></div>
+    <div class="player">
+        <div class="wrap_radio" ng-repeat="a in audio">
+            <div class="radi">
+                <button class="btn-play" ng-class="a.selected ? 'play' : 'pause'" ng-click="playMusic(a)"></button>
+                <div class="name">{[{ a.name }]}</div>
+            </div>
+        </div>
+    </div>
+</div>

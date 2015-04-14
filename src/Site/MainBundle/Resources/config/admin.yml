@@ -50,3 +50,23 @@ services:
             - 'SiteMainBundle:ImageAdmin'
         calls:
             - [ setTranslationDomain, [SiteMainBundle]]
+    sonata.admin.playlist:
+        class: Site\MainBundle\Admin\PlaylistAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Радио" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Playlist
+            - 'SiteMainBundle:PlaylistAdmin'
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]
+    sonata.admin.audio:
+        class: Site\MainBundle\Admin\AudioAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Музыкальные файлы" }
+        arguments:
+            - ~
+            - Site\MainBundle\Entity\Audio
+            - 'SiteMainBundle:AudioAdmin'
+        calls:
+            - [ setTranslationDomain, [SiteMainBundle]]

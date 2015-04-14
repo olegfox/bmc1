@@ -149,6 +149,9 @@ sonata_admin:
         Site_portfolio:
           label: Фото
           items: [sonata.admin.portfolio]
+        Site_playlist:
+          label: Радио
+          items: [sonata.admin.playlist]
 sonata_formatter:
     formatters:
         markdown:

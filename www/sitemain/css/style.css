@@ -7,7 +7,7 @@ body {
     position: relative;
     width: 1125px;
     margin: 0 auto;
-    padding: 50px;
+    padding: 0px 50px 50px 50px;
     background: #fff;
     font-size: 14px;
     text-transform: uppercase;
@@ -378,4 +378,125 @@ ul.catalog li img{
 }
 .div3{
     margin: 50px 0;
+}
+.audio{
+    background: url('/sitemain/images/audio-bg.jpg') repeat-x;
+    height: 120px;
+    line-height: 120px;
+    margin: 0px -50px 30px -50px;
+    padding: 0px 50px;
+}
+.audio .logo{
+    display: inline-block;
+    background: url('/sitemain/images/audio-logo.jpg') no-repeat;
+    width: 204px;
+    height: 90px;
+    vertical-align: middle;
+}
+.audio .player{
+    display: inline-block;
+    vertical-align: middle;
+    height: 75px;
+    line-height: 75px;
+    margin-left: 100px;
+}
+.audio .player .wrap_radio{
+    display: inline-block;
+    height: 75px;
+    background: #757575;
+    margin-right: 30px;
+}
+.audio .player .wrap_radio .radi{
+    height: 75px;
+    padding: 15px;
+    line-height: 45px;
+}
+.audio .player .wrap_radio .radi button.btn-play{
+    display: inline-block;
+    width: 44px;
+    height: 45px;
+    border: 0px;
+    background: url('/sitemain/images/audio-play.jpg') 0 0 no-repeat;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.audio .player .wrap_radio .radi button.btn-play:focus{
+    outline: 0px;
+}
+.audio .player .wrap_radio .radi button.btn-play.play{
+    background: url('/sitemain/images/audio-play.jpg') -44px 0px no-repeat;
+}
+.audio .player .wrap_radio .radi .name{
+    color: #fff;
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 15px;
+    line-height: 16px;
+}
+.audio .play-control{
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    background: #757575;
+    width: 200px;
+    height: 75px;
+    line-height: 80px;
+    color: #fff;
+    text-align: center;
+}
+.audio .play-control .prev,
+.audio .play-control .next{
+    display: inline-block;
+    cursor: pointer;
+    font-size: 2em;
+    vertical-align: top;
+}
+@-webkit-keyframes scroll {
+    0% {
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    100% {
+        -webkit-transform: translate(-100%, 0);
+        transform: translate(-100%, 0)
+    }
+}
+
+@-moz-keyframes scroll {
+    0% {
+        -moz-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
+    100% {
+        -moz-transform: translate(-100%, 0);
+        transform: translate(-100%, 0)
+    }
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-100%, 0)
+    }
+}
+
+
+.audio .play-control .name {
+    display: inline-block;
+    width: 140px;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+.audio .play-control .name span {
+    display: inline-block;
+    padding-left: 100%;
+    -webkit-animation: scroll 5s infinite linear;
+    -moz-animation: scroll 5s infinite linear;
+    animation: scroll 5s infinite linear;
 }

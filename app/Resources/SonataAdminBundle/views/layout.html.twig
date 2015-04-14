@@ -31,4 +31,8 @@
     or app.request.attributes.get('_route') == 'admin_site_main_factory_create' %}
         <script type="text/javascript" src="{{ asset('sitemain/js/init_uploadify.js') }}"></script>
     {% endif %}
+    {% if app.request.attributes.get('_route') == 'admin_site_main_playlist_edit'
+    or app.request.attributes.get('_route') == 'admin_site_main_playlist_create' %}
+        <script type="text/javascript" src="{{ asset('sitemain/js/init_uploadify_audio.js') }}"></script>
+    {% endif %}
 {% endblock %}
