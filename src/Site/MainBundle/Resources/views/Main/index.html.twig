@@ -3,20 +3,20 @@
 {% block html %}ng-app="audio"{% endblock %}
 
 {% block content %}
-<div class="div1">
-    {{ pages[0].text|raw }}
-</div>
+{#<div class="div1">#}
+    {#{{ pages[0].text|raw }}#}
+{#</div>#}
 <div class="div2">
     {% if portfolio is defined %}
         {% for portf in portfolio %}
-        <div class="head">{{ portf.title }}</div>
+        {#<div class="head">{{ portf.title }}</div>#}
         <ul class="catalog">
-            {% for image in portf.images %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}"><a href="#" onclick="collections({{ image.id }}, '{{ image.src }}', '{{ imagesPortfolio }}', ''); return false;"><img src="{{ image(image.src).zoomCrop(253, 183) }}" alt="{{ portf.title }}"></a></li>{% endfor %}
+            {% for image in portf.images %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}"><a href="#" onclick="collections({{ image.id }}, '{{ image.src }}', '{{ imagesPortfolio }}', ''); return false;"><img src="{{ image(image.src).zoomCrop(506, 366).jpeg(100) }}" alt="{{ portf.title }}"></a></li>{% endfor %}
         </ul>
             {% endfor %}
     {% endif %}
 </div>
-<div class="div3">
-    {{ pages[1].text|raw }}
-</div>
+{#<div class="div3">#}
+    {#{{ pages[1].text|raw }}#}
+{#</div>#}
 {% endblock %}

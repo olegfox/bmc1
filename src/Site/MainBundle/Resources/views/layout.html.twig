@@ -16,9 +16,6 @@
     {{ parent() }}
     <div class="content">
         {{ render(url('Site_main_audio')) }}
-        <div class="logotip">
-            <img src="{{ asset("sitemain/images/logo.jpg") }}" width="1024px" height="399px" />
-        </div>
         {% block content %}
         {% endblock %}
     </div>

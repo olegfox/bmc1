@@ -67,7 +67,7 @@ angular
                     resetPlay();
                     pl.selected = 1;
                     $scope.currentPlaylist = pl;
-                    $('.audio .play-control').show();
+                    $('.audio .play-control').css('display', 'inline-block');
                     $scope.player.load(pl.audio[pl.numberTrack].file);
                     $scope.player.seek(pl.seeking);
                     $scope.player.play();
@@ -82,6 +82,15 @@ angular
                         $scope.playNext();
                     });
                 }
+
+//              Выбор радио
+                $scope.changeRadio = function(){
+                    if($('.audio .player .wrap_radio').css('display') == 'none'){
+                        $('.audio .player .wrap_radio').css('display', 'inline-block');
+                    }else{
+                        $('.audio .player .wrap_radio').css('display', 'none');
+                    }
+                };
 
 //              Нажатие на плейлист
                 $scope.playMusic = function(playlist){
