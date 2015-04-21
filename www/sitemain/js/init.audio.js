@@ -27,6 +27,28 @@ angular
 //              Текущий плейлист
                 $scope.currentPlaylist = $scope.audio[0];
 
+//              Определение мобильного устройства
+                var isMobile = {
+                    Android: function() {
+                        return navigator.userAgent.match(/Android/i);
+                    },
+                    BlackBerry: function() {
+                        return navigator.userAgent.match(/BlackBerry/i);
+                    },
+                    iOS: function() {
+                        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+                    },
+                    Opera: function() {
+                        return navigator.userAgent.match(/Opera Mini/i);
+                    },
+                    Windows: function() {
+                        return navigator.userAgent.match(/IEMobile/i);
+                    },
+                    any: function() {
+                        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+                    }
+                };
+
 //              Перевод временной строки в секунды
                 var timeToSeconds = function(time){
                     time = time.split(/:/);
@@ -96,7 +118,8 @@ angular
 
                     loadMusic($scope.currentPlaylist);
                 };
-
-                $scope.playMusic($scope.currentPlaylist);
+                if( !isMobile.iOS() ){
+                    $scope.playMusic($scope.currentPlaylist);
+                }
             });
     });
