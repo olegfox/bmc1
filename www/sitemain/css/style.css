@@ -1,6 +1,6 @@
 body {
     font-family: Arial;
-    background: #dcdcdc;
+    background: #000;
     -webkit-overflow-scrolling:touch;
 }
 .content{
@@ -289,10 +289,32 @@ ul.catalog{
     margin-bottom: 0px;
 }
 ul.catalog li a{
+    position: absolute;
     color: #000;
     text-decoration: none;
-    background: none;
+    background: #000;
     border: none;
+    width: 100%;
+    height: 100%;
+    -moz-opacity: 0.55;
+    -khtml-opacity: 0.55;
+    opacity: 0.55;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=55);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=55);
+    filter:alpha(opacity=55);
+}
+ul.catalog li a:hover{
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    -ms-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+    -moz-opacity: 0.00;
+    -khtml-opacity: 0.00;
+    opacity: 0.00;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha"(Opacity=0);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    filter:alpha(opacity=0);
 }
 ul.catalog li a img{
     border: none;
@@ -302,10 +324,9 @@ ul.catalog li span{
     font-family: "Century Gothic";
 }
 ul.catalog li {
-    width: 24.775%;
+    position: relative;
+    width: 25%;
     display: inline-block;
-    margin-right: 0.3%;
-    margin-bottom: 0.3%;
 }
 ul.catalog li.lst{
     margin-right: 0px;
@@ -385,6 +406,7 @@ ul.catalog li img{
     line-height: 120px;
     padding: 0px 50px;
     top: 0px;
+    z-index: 1000;
 }
 .audio .logo{
     display: inline-block;
@@ -443,7 +465,7 @@ ul.catalog li img{
     border-bottom: 0px;
 }
 .audio .play-control{
-    display: none;
+    display: inline-block;
     position: fixed;
     background: #000;
     width: 345px;
@@ -451,10 +473,15 @@ ul.catalog li img{
     line-height: 50px;
     color: #fff;
     text-align: center;
-    top: 35px;
+    top: 40px;
     left: 0px;
     right: 0px;
     margin: 0 auto;
+}
+.audio .play-control .buttons{
+    width: 345px;
+    height: 50px;
+    line-height: 50px;
 }
 .audio .play-control .wrap_prev{
     display: inline-block;
@@ -556,4 +583,88 @@ ul.catalog li img{
     -webkit-animation: scroll 5s infinite linear;
     -moz-animation: scroll 5s infinite linear;
     animation: scroll 5s infinite linear;
+}
+
+@media screen and (max-width: 1100px){
+    .audio .play-control{
+        width: auto;
+        height: auto;
+        bottom: 0px;
+        top: initial;
+        padding-top: 60px;
+    }
+    .audio .play-control .buttons{
+        display: inline-block;
+        width: 345px;
+    }
+    .audio .play-control .name{
+        top: 20px;
+        width: 345px;
+        left: 0px;
+        right: 0px;
+        margin: 0px auto;
+    }
+    .audio .player .button{
+        width: 165px;
+    }
+    .audio .player .wrap_radio{
+        width: 165px;
+    }
+}
+@media screen and (max-width: 800px){
+    .audio{
+        position: fixed;
+        background: #000;
+        height: 60px;
+        width: 100%;
+        line-height: 60px;
+        padding: 0px 15px;
+        top: 0px;
+        z-index: 1000;
+    }
+    .audio .player{
+        position: relative;
+        float: right;
+        height: 42px;
+        line-height: 42px;
+        margin-top: 9px;
+        z-index: 1000;
+    }
+    .audio .logo{
+        background: url('/sitemain/images/logo.png') no-repeat;
+        background-size: contain;
+        width: 117px;
+        height: 50px;
+    }
+    .audio .play-control .buttons{
+        display: inline-block;
+        width: 245px;
+    }
+    .audio .play-control .name{
+        width: 245px;
+    }
+    .audio .player .button{
+        color: #F4F4F4;
+        font-family: "Arial";
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-align: center;
+        width: 130px;
+        height: 42px;
+        line-height: 39px;
+        border: #fff solid 2px;
+        cursor: pointer;
+    }
+    .audio .player .wrap_radio{
+        width: 130px;
+    }
+    .audio .player .wrap_radio .radi{
+        height: 30px;
+        line-height: 30px;
+    }
+    ul.catalog{
+        margin-top: 60px;
+        margin-bottom: 110px;
+    }
 }

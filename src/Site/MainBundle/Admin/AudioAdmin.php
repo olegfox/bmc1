@@ -20,7 +20,9 @@ class AudioAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name', 'text', array('label' => 'Название трека'));
+            ->add('name', 'text', array('label' => 'Название трека'))
+            ->add('linkItunes', 'url', array('label' => 'Ссылка на '))
+            ->add('linkGooglePlay', 'text', array('label' => 'Название трека'));
     }
 
     // Fields to be shown on lists

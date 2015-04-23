@@ -27,6 +27,16 @@ class Audio {
     /**
      * @ORM\Column(type="text", nullable = true)
      */
+    private $linkItunes = "";
+
+    /**
+     * @ORM\Column(type="text", nullable = true)
+     */
+    private $linkGooglePlay = "";
+
+    /**
+     * @ORM\Column(type="text", nullable = true)
+     */
     private $file = "";
 
     /**
@@ -113,5 +123,51 @@ class Audio {
     public function getPlaylist()
     {
         return $this->playlist;
+    }
+
+    /**
+     * Set linkItunes
+     *
+     * @param string $linkItunes
+     * @return Audio
+     */
+    public function setLinkItunes($linkItunes)
+    {
+        $this->linkItunes = $linkItunes;
+
+        return $this;
+    }
+
+    /**
+     * Get linkItunes
+     *
+     * @return string 
+     */
+    public function getLinkItunes()
+    {
+        return $this->linkItunes;
+    }
+
+    /**
+     * Set linkGooglePlay
+     *
+     * @param string $linkGooglePlay
+     * @return Audio
+     */
+    public function setLinkGooglePlay($linkGooglePlay)
+    {
+        $this->linkGooglePlay = $linkGooglePlay;
+
+        return $this;
+    }
+
+    /**
+     * Get linkGooglePlay
+     *
+     * @return string 
+     */
+    public function getLinkGooglePlay()
+    {
+        return $this->linkGooglePlay;
     }
 }

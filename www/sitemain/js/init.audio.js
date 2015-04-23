@@ -52,7 +52,7 @@ angular
 //              Перевод временной строки в секунды
                 var timeToSeconds = function(time){
                     time = time.split(/:/);
-                    return time[0] * 60 + time[1];
+                    return parseInt(time[0] * 60 + time[1]);
                 }
 
 //              Сброс проигрывания всех плейлистов
@@ -62,14 +62,26 @@ angular
                     }
                 }
 
+//              Флаг первичной загрузки
+                var flagFirst = 0;
+
 //              Загрузка трека
                 var loadMusic = function(pl){
                     resetPlay();
+
+                    if(pl != $scope.currentPlaylist){
+                        flagFirst = 0;
+                    }
+
+                    if(pl.seeking == 0 || flagFirst == 0){
+                        $scope.currentPlaylist = pl;
+                        $('.audio .play-control').css('display', 'inline-block');
+                        $scope.player.load(pl.audio[pl.numberTrack].file);
+                        $scope.player.seek(pl.seeking);
+                        flagFirst = 1;
+                    }
+
                     pl.selected = 1;
-                    $scope.currentPlaylist = pl;
-                    $('.audio .play-control').css('display', 'inline-block');
-                    $scope.player.load(pl.audio[pl.numberTrack].file);
-                    $scope.player.seek(pl.seeking);
                     $scope.player.play();
 
 //                  Обновление времени проигрывания трека

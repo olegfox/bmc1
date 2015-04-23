@@ -11,7 +11,7 @@
         {% for portf in portfolio %}
         {#<div class="head">{{ portf.title }}</div>#}
         <ul class="catalog">
-            {% for image in portf.images %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}"><a href="#" onclick="collections({{ image.id }}, '{{ image.src }}', '{{ imagesPortfolio }}', ''); return false;"><img src="{{ image(image.src).zoomCrop(506, 366).jpeg(100) }}" alt="{{ portf.title }}"></a></li>{% endfor %}
+            {% for image in portf.images %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}"><a href="#" onclick="collections({{ image.id }}, '{{ image.src }}', '{{ imagesPortfolio }}', ''); return false;"></a><img class="lazy" data-original="{{ image(image.src).zoomCrop(506, 366).jpeg(100) }}" src="{{ asset('sitemain/images/black.jpg') }}" alt="{{ portf.title }}"></li>{% endfor %}
         </ul>
             {% endfor %}
     {% endif %}

@@ -1,15 +1,17 @@
 <div class="audio" ng-controller="AudioController">
     <a class="logo" href="{{ path('Site_main_homepage') }}"></a>
     <div class="play-control">
-        <div class="wrap_prev">
-            <div class="prev" ng-click="playPrev()"></div>
-        </div><div class="wrap_play"><div class="play" ng-class="currentPlaylist.selected ? '' : 'pause'" ng-click="playMusic(currentPlaylist)"></div></div><div class="wrap_next">
-            <div class="next" ng-click="playNext()"></div>
+        <div class="buttons">
+            <div class="wrap_prev">
+                <div class="prev" ng-click="playPrev()"></div>
+            </div><div class="wrap_play"><div class="play" ng-class="currentPlaylist.selected ? '' : 'pause'" ng-click="playMusic(currentPlaylist)"></div></div><div class="wrap_next">
+                <div class="next" ng-click="playNext()"></div>
+            </div>
+            <div class="name"><span>{[{ currentPlaylist.audio[currentPlaylist.numberTrack].name }]}</span></div>
         </div>
-        <div class="name"><span>{[{ currentPlaylist.audio[currentPlaylist.numberTrack].name }]}</span></div>
     </div>
     <div class="player">
-        <div class="button" ng-click="changeRadio()">выбрать другое радио</div>
+        <div class="button" ng-click="changeRadio()">другое радио</div>
         <div class="list">
             <div class="wrap_radio">
                 <div class="radi" ng-repeat="a in audio">
