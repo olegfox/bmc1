@@ -468,20 +468,32 @@ ul.catalog li img{
     display: inline-block;
     position: fixed;
     background: #000;
-    width: 345px;
+    width: 40%;
     height: 50px;
     line-height: 50px;
     color: #fff;
     text-align: center;
-    top: 40px;
+    top: 35px;
     left: 0px;
     right: 0px;
     margin: 0 auto;
 }
 .audio .play-control .buttons{
-    width: 345px;
+    position: relative;
+    display: inline-block;
+    width: 50%;
     height: 50px;
     line-height: 50px;
+}
+.audio .play-control .badges{
+    display: inline-block;
+    width: 50%;
+}
+.audio .play-control .badges .apple{
+    display: inline-block;
+}
+.audio .play-control .badges .google{
+    display: inline-block;
 }
 .audio .play-control .wrap_prev{
     display: inline-block;
@@ -591,14 +603,14 @@ ul.catalog li img{
         height: auto;
         bottom: 0px;
         top: initial;
-        padding-top: 60px;
+        padding-top: 100px;
     }
     .audio .play-control .buttons{
         display: inline-block;
         width: 345px;
     }
     .audio .play-control .name{
-        top: 20px;
+        top: 27px;
         width: 345px;
         left: 0px;
         right: 0px;
@@ -609,6 +621,15 @@ ul.catalog li img{
     }
     .audio .player .wrap_radio{
         width: 165px;
+    }
+    .audio .play-control .badges{
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 20px;
+        display: inline-block;
+        width: 50%;
+        margin: 0 auto;
     }
 }
 @media screen and (max-width: 800px){

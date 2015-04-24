@@ -91,7 +91,9 @@ angular
 
 //                  Окончание проигрывания трека и переключение на следующий трек
                     $scope.player.on('ended', function () {
-                        $scope.playNext();
+                        setTimeout(function(){
+                            $scope.playNext();
+                        }, 1000);
                     });
                 }
 

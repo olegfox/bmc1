@@ -23,6 +23,9 @@ class PlaylistRepository extends EntityRepository
             foreach($playlist->getTracks() as $track){
                 $audio[$i]['audio'][] = array(
                     'name' => $track->getName(),
+                    'linkGooglePlay' => $track->getLinkGooglePlay(),
+                    'linkItunes' => $track->getLinkItunes(),
+                    'name' => $track->getName(),
                     'file' => '/' . $track->getFile()
                 );
             }
