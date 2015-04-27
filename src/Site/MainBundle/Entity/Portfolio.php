@@ -9,7 +9,7 @@ use Site\MainBundle\Translitor\Translitor;
  * Site\MainBundle\Entity\Portfolio
  *
  * @ORM\Table(name="portfolio")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Site\MainBundle\Entity\Repository\PortfolioRepository")
  */
 class Portfolio {
 

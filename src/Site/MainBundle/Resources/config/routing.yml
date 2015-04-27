@@ -1,3 +1,7 @@
+Site_main_scaner:
+    pattern:  /scaner
+    defaults: { _controller: SiteMainBundle:Main:scaner}
+
 Site_main_audio:
     pattern:  /audio
     defaults: { _controller: SiteMainBundle:Audio:index}

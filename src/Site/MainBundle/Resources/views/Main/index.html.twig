@@ -7,14 +7,9 @@
     {#{{ pages[0].text|raw }}#}
 {#</div>#}
 <div class="div2">
-    {% if portfolio is defined %}
-        {% for portf in portfolio %}
-        {#<div class="head">{{ portf.title }}</div>#}
         <ul class="catalog">
-            {% for image in portf.images %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}"><a href="#" onclick="collections({{ image.id }}, '{{ image.src }}', '{{ imagesPortfolio }}', ''); return false;"></a><img class="lazy" data-original="{{ image(image.src).zoomCrop(506, 366) }}" src="{{ asset('sitemain/images/black.jpg') }}" alt="{{ portf.title }}"></li>{% endfor %}
+            {% for image in portfolio %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}"><a href="#" onclick="collections({{ image.id }}, '{{ image.photo }}', '{{ imagesPortfolio }}', ''); return false;"></a><img class="lazy" data-original="{{ image(image.photo).zoomCrop(506, 366) }}" src="{{ asset('sitemain/images/black.jpg') }}" alt=""></li>{% endfor %}
         </ul>
-            {% endfor %}
-    {% endif %}
 </div>
 {#<div class="div3">#}
     {#{{ pages[1].text|raw }}#}

@@ -404,14 +404,14 @@ ul.catalog li img{
     height: 120px;
     width: 100%;
     line-height: 120px;
-    padding: 0px 50px;
+    padding: 0px;
     top: 0px;
     z-index: 1000;
 }
 .audio .logo{
     display: inline-block;
-    background: url('/sitemain/images/logo.png') no-repeat;
-    width: 215px;
+    background: url('/sitemain/images/logo.png') center no-repeat;
+    width: 25%;
     height: 92px;
     vertical-align: middle;
 }
@@ -419,11 +419,14 @@ ul.catalog li img{
     position: relative;
     float: right;
     height: 52px;
+    width: 25%;
     line-height: 52px;
     margin-top: 34px;
     z-index: 1000;
+    text-align: center;
 }
 .audio .player .button{
+    display: inline-block;
     color: #F4F4F4;
     font-family: "Arial";
     font-size: 14px;
@@ -468,7 +471,7 @@ ul.catalog li img{
     display: inline-block;
     position: fixed;
     background: #000;
-    width: 40%;
+    width: 50%;
     height: 50px;
     line-height: 50px;
     color: #fff;
@@ -500,18 +503,21 @@ ul.catalog li img{
     width: 30%;
     height: 17px;
     text-align: left;
+    vertical-align: top;
 }
 .audio .play-control .wrap_next{
     display: inline-block;
     width: 30%;
     height: 17px;
     text-align: right;
+    vertical-align: top;
 }
 .audio .play-control .wrap_play{
     display: inline-block;
     width: 40%;
     height: 17px;
     text-align: center;
+    vertical-align: top;
 }
 .audio .play-control .play{
     display: inline-block;
@@ -597,7 +603,7 @@ ul.catalog li img{
     animation: scroll 5s infinite linear;
 }
 
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1400px){
     .audio .play-control{
         width: auto;
         height: auto;
@@ -628,8 +634,12 @@ ul.catalog li img{
         right: 0px;
         top: 20px;
         display: inline-block;
-        width: 50%;
+        width: 100%;
         margin: 0 auto;
+    }
+    ul.catalog{
+        margin-top: 60px;
+        margin-bottom: 150px;
     }
 }
 @media screen and (max-width: 800px){
@@ -683,9 +693,5 @@ ul.catalog li img{
     .audio .player .wrap_radio .radi{
         height: 30px;
         line-height: 30px;
-    }
-    ul.catalog{
-        margin-top: 60px;
-        margin-bottom: 110px;
     }
 }

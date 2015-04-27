@@ -21,8 +21,8 @@ class AudioAdmin extends Admin
     {
         $formMapper
             ->add('name', 'text', array('label' => 'Название трека'))
-            ->add('linkItunes', 'url', array('label' => 'Ссылка на App Store'))
-            ->add('linkGooglePlay', 'text', array('label' => 'Google play'));
+            ->add('linkItunes', 'text', array('label' => 'Ссылка на App Store'))
+            ->add('linkGooglePlay', 'text', array('label' => 'Ссылка на Google play'));
     }
 
     // Fields to be shown on lists

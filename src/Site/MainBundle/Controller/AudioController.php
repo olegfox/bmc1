@@ -18,9 +18,9 @@ class AudioController extends Controller
 
     public function jsonAction()
     {
-        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:Playlist');
-        $audio = $repository->getJson();
+//        $repository = $this->getDoctrine()->getRepository('SiteMainBundle:Playlist');
+//        $audio = $repository->getJson();
 
-        return new Response(json_encode($audio));
+        return new Response(file_get_contents('music/playlist.json'));
     }
 }

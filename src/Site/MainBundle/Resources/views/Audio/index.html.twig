@@ -10,13 +10,13 @@
             <div class="name"><span>{[{ currentPlaylist.audio[currentPlaylist.numberTrack].name }]}</span></div>
         </div><div class="badges">
             <div class="apple">
-                <a href="{[{ currentPlaylist.audio[currentPlaylist.numberTrack].linkItunes }]}">
-                    <img alt="Get it on App Store"
+                <a href="{[{ currentPlaylist.audio[currentPlaylist.numberTrack].linkItunes }]}" target="_blank">
+                    <img alt="Get it on App Store" height="45"
                          src="{{ asset('sitemain/images/Download_on_the_App_Store_Badge_RU_135x40.svg') }}" />
                 </a>
             </div>
             <div class="google">
-                <a href="{[{ currentPlaylist.audio[currentPlaylist.numberTrack].linkGooglePlay }]}">
+                <a href="{[{ currentPlaylist.audio[currentPlaylist.numberTrack].linkGooglePlay }]}" target="_blank">
                     <img alt="Get it on Google Play"
                          src="https://developer.android.com/images/brand/ru_generic_rgb_wo_45.png" />
                 </a>
