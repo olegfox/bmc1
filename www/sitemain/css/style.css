@@ -328,6 +328,13 @@ ul.catalog li {
     width: 25%;
     display: inline-block;
 }
+ul.catalog li .text{
+    display: inline-block;
+    font-size: 14px;
+    color: #fff;
+    vertical-align: middle;
+    width: 100%;
+}
 ul.catalog li.lst{
     margin-right: 0px;
 }
@@ -421,23 +428,26 @@ ul.catalog li img{
     height: 52px;
     width: 25%;
     line-height: 52px;
-    margin-top: 34px;
+    margin-top: 42px;
     z-index: 1000;
     text-align: center;
 }
 .audio .player .button{
     display: inline-block;
-    color: #F4F4F4;
-    font-family: "Arial";
+    color: #E4E4E4;
+    font-family: "Tahoma";
     font-size: 14px;
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
     width: 265px;
-    height: 52px;
-    line-height: 46px;
-    border: #fff solid 4px;
+    height: 45px;
+    line-height: 41px;
     cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.64);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
 }
 .audio .player .wrap_radio{
     display: none;
@@ -456,7 +466,7 @@ ul.catalog li img{
     font-family: "Arial";
     font-size: 14px;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: initial;
     text-align: center;
     border-bottom: #7b7b7b solid 2px;
 }
@@ -491,12 +501,15 @@ ul.catalog li img{
 .audio .play-control .badges{
     display: inline-block;
     width: 50%;
+    margin-top: 6px;
 }
 .audio .play-control .badges .apple{
     display: inline-block;
+    margin-left: 4px;
 }
 .audio .play-control .badges .google{
     display: inline-block;
+    margin-left: 8px;
 }
 .audio .play-control .wrap_prev{
     display: inline-block;
@@ -504,6 +517,8 @@ ul.catalog li img{
     height: 17px;
     text-align: left;
     vertical-align: top;
+    margin-top: 2px;
+    padding-left: 85px;
 }
 .audio .play-control .wrap_next{
     display: inline-block;
@@ -511,6 +526,8 @@ ul.catalog li img{
     height: 17px;
     text-align: right;
     vertical-align: top;
+    margin-top: 2px;
+    padding-right: 85px;
 }
 .audio .play-control .wrap_play{
     display: inline-block;
@@ -536,14 +553,14 @@ ul.catalog li img{
     display: inline-block;
     cursor: pointer;
     vertical-align: top;
-    width: 32px;
+    width: 31px;
     height: 17px;
 }
 .audio .play-control .prev{
-    background: url('/sitemain/images/player-buttons.png') 0 -3px no-repeat;
+    background: url('/sitemain/images/player-buttons.png') 0 -4px no-repeat;
 }
 .audio .play-control .next{
-    background: url('/sitemain/images/player-buttons.png') -32px -3px no-repeat;
+    background: url('/sitemain/images/player-buttons.png') -33px -4px no-repeat;
 }
 @-webkit-keyframes scroll {
     0% {
@@ -638,7 +655,7 @@ ul.catalog li img{
         margin: 0 auto;
     }
     ul.catalog{
-        margin-top: 60px;
+        margin-top: 120px;
         margin-bottom: 150px;
     }
 }
@@ -656,9 +673,11 @@ ul.catalog li img{
     .audio .player{
         position: relative;
         float: right;
+        width: 130px;
         height: 42px;
         line-height: 42px;
         margin-top: 9px;
+        margin-right: 0px;
         z-index: 1000;
     }
     .audio .logo{
@@ -675,11 +694,8 @@ ul.catalog li img{
         width: 245px;
     }
     .audio .player .button{
-        color: #F4F4F4;
-        font-family: "Arial";
+        color: #E4E4E4;
         font-size: 12px;
-        font-weight: 900;
-        text-transform: uppercase;
         text-align: center;
         width: 130px;
         height: 42px;
@@ -693,5 +709,17 @@ ul.catalog li img{
     .audio .player .wrap_radio .radi{
         height: 30px;
         line-height: 30px;
+    }
+    .audio .player .wrap_radio .radi .name{
+        font-size: 10px;
+    }
+    ul.catalog li .text{
+        font-size: 6px;
+    }
+    .audio .play-control .wrap_prev{
+        padding-left: 0px;
+    }
+    .audio .play-control .wrap_next{
+        padding-right: 0px;
     }
 }

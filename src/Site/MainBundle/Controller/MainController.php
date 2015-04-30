@@ -14,6 +14,7 @@ class MainController extends Controller
         $repository_news = $this->getDoctrine()
             ->getRepository('SiteMainBundle:Page');
         $pages = $repository_news->findAll();
+        $page = $repository_news->findOneBySlug('glavnaya_3');
         $repository_catalog = $this->getDoctrine()
             ->getRepository('SiteMainBundle:Catalog');
         $catalog = $repository_catalog->findAll();
@@ -47,6 +48,7 @@ class MainController extends Controller
         }
         $params = array(
             "pages" => $pages,
+            'page' => $page,
             "catalog" => $catalog,
             "factory" => $factory,
             'portfolio' => $imagesPortfolio,
@@ -100,16 +102,18 @@ class MainController extends Controller
 //              Проверяем есть ли такой плейлист
                 if(count($audio) > 0){
                     foreach($audio as $a){
-                        if($a['name'] == $iterator->getSubPath()){
-                            $fl = 1;
-                            break;
+                        if(isset($a['name'])){
+                            if($a['name'] == $iterator->getSubPath()){
+                                $fl = 1;
+                                break;
+                            }
                         }
                     }
                 }
 
 //              Если такого плейлиста нет, то добавляем его
                 if($fl == 0){
-                    if($iterator->getSubPath() != ''){
+                    if(mb_strlen($iterator->getSubPath()) > 0 && mb_detect_encoding($iterator->getSubPath()) == 'ASCII' && $iterator->getSubPath() != ""){
 
                         $count_files = $countFiles('music/' . $iterator->getSubPath());
 
@@ -117,6 +121,7 @@ class MainController extends Controller
                             $i++;
                             $audio[$i] = array(
                                 'name' => $iterator->getSubPath(),
+                                'iconv' => mb_detect_encoding($iterator->getSubPath()),
                                 'selected' => 0,
                                 'seeking' => 0,
                                 'numberTrack' => 0,
@@ -130,11 +135,11 @@ class MainController extends Controller
                 $pathinfo = pathinfo($iterator->key());
 
 //              Добавляем музыку в плейлист
-                if(substr($pathinfo['filename'], 0, 1) != '.' && $pathinfo['filename'] != 'playlist'){
+                if(substr($pathinfo['filename'], 0, 1) != '.' && $pathinfo['filename'] != 'playlist' && $i >= 0){
                     $audio[$i]['audio'][] = array(
                         'name' => $pathinfo['filename'],
-                        'linkGooglePlay' => 'https://play.google.com/store/search?q=' . $pathinfo['filename'],
-                        'linkItunes' => 'http://itunes.com/search',
+                        'linkGooglePlay' => 'https://play.google.com/store/search?q=' . urlencode($pathinfo['filename']),
+                        'linkItunes' => 'http://itunes.com/search?term=' . urlencode($pathinfo['filename']),
                         'file' => '/' . $iterator->key()
                     );
                 }
@@ -144,7 +149,36 @@ class MainController extends Controller
             $iterator->next();
         }
 
-        file_put_contents('music/playlist.json', json_encode($audio, TRUE));
-        return new Response(json_encode($audio, TRUE), 200);
+        $sort = array(
+            "Pre Party Sound" => 0,
+            "Club Sound" => 1,
+            "After Party Sound" => 2,
+            "Night Sound" => 3,
+            "Morning Sound" => 4,
+            "Day Sound" => 5,
+            "Evening Songs" => 6,
+            "Morning Songs" => 7,
+            "Relax Music" => 8,
+            "Radio Release Eng" => 9,
+            "Radio Release Russ" => 10,
+            "Утренние Песни" => 11,
+            "Дневные Композиции" => 12,
+            "Вечерние Треки" => 13,
+            "Ночные Мелодии" => 14
+        );
+
+        $audioCopy = array();
+
+        foreach($sort as $key => $s){
+            foreach($audio as $key2 => $a){
+                if($a['name'] == $key){
+                    $audioCopy[] = $audio[$key2];
+//                    unset($audio[$key2]);
+                }
+            }
+        }
+
+        file_put_contents('music/playlist.json', json_encode($audioCopy, TRUE));
+        return new Response(json_encode($audioCopy, TRUE), 200);
     }
 }
