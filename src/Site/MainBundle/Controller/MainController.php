@@ -140,7 +140,7 @@ class MainController extends Controller
                         'name' => $pathinfo['filename'],
                         'linkGooglePlay' => 'https://play.google.com/store/search?q=' . urlencode($pathinfo['filename']),
                         'linkItunes' => 'http://itunes.com/search?term=' . urlencode($pathinfo['filename']),
-                        'file' => '/' . $iterator->key()
+                        'file' => $iterator->key()
                     );
                 }
 
@@ -164,7 +164,8 @@ class MainController extends Controller
             "Утренние Песни" => 11,
             "Дневные Композиции" => 12,
             "Вечерние Треки" => 13,
-            "Ночные Мелодии" => 14
+            "Ночные Мелодии" => 14,
+            "9_12" => 15
         );
 
         $audioCopy = array();

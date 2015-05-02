@@ -3,9 +3,9 @@
     <div class="play-control">
         <div class="buttons">
             <div class="wrap_prev">
-                <div class="prev" ng-click="playPrev()"></div>
-            </div><div class="wrap_play"><div class="play" ng-class="currentPlaylist.selected ? '' : 'pause'" ng-click="playMusic(currentPlaylist)"></div></div><div class="wrap_next">
-                <div class="next" ng-click="playNext()"></div>
+                {#<div class="prev" ng-click="playPrev()"></div>#}
+            </div><div class="wrap_play"><div class="play" ng-class="currentPlaylist.selected ? '' : 'pause'" ng-click="player.playPause()"></div></div><div class="wrap_next">
+                {#<div class="next" ng-click="playNext()"></div>#}
             </div>
             <div class="name"><span>{[{ currentPlaylist.audio[currentPlaylist.numberTrack].name }]}</span></div>
         </div><div class="badges">
@@ -28,7 +28,7 @@
         <div class="list">
             <div class="wrap_radio">
                 <div class="radi" ng-repeat="a in audio">
-                    <div class="name" ng-class="a.selected ? 'play' : 'pause'" ng-click="playMusic(a)">{[{ a.name }]}</div>
+                    <div class="name" id="{[{ a.name }]}" ng-class="a.selected ? 'play' : 'pause'" ng-click="playMusic(a, 1, 1)">{[{ a.name }]}</div>
                 </div>
             </div>
         </div>
