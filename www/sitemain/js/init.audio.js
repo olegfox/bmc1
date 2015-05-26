@@ -16,10 +16,11 @@ angular
         return audio5js;
     })
     .controller('AudioController', function ($scope, $http, AudioService) {
-        $http.get('/audio/json').
-            then(function (response) {
 //              Плейлисты
-                $scope.audio = response.data;
+                $scope.audio = {
+                    'audio' : 'http://62.213.99.171:8000/radio_mount',
+                    'selected' : 0
+                };
 
 //              Сервис для работы с аудио
                 $scope.player = AudioService;
@@ -28,26 +29,7 @@ angular
                 $scope.click = 0;
 
 //              Текущий плейлист
-                $scope.currentPlaylist = $scope.audio[0];
-                var date = new Date();
-                var hour = date.getHours();
-
-                if (hour >= 18) {
-//                  препати саунд
-                    $scope.currentPlaylist = $scope.audio[0];
-                } else if (hour >= 0 && hour < 4) {
-//                  найт саунд
-                    $scope.currentPlaylist = $scope.audio[1];
-                } else if (hour >= 4 && hour < 8) {
-//                  морнинг саунд
-                    $scope.currentPlaylist = $scope.audio[2];
-                } else if (hour >= 8 && hour < 12) {
-//                  с 9 до 12
-                    $scope.currentPlaylist = $scope.audio[4];
-                } else if (hour >= 12 && hour < 18) {
-//                  дэй саунд
-                    $scope.currentPlaylist = $scope.audio[3];
-                }
+                $scope.currentPlaylist = $scope.audio;
 
 //              Определение мобильного устройства
                 var isMobile = {
@@ -78,66 +60,66 @@ angular
                 }
 
 //              Сброс проигрывания всех плейлистов
-                var resetPlay = function () {
-                    for (var a in $scope.audio) {
-                        $scope.audio[a].selected = 0;
-                    }
-                }
+//                var resetPlay = function () {
+//                    for (var a in $scope.audio) {
+//                        $scope.audio[a].selected = 0;
+//                    }
+//                }
 
 //              Флаг первичной загрузки
                 var flagFirst = 0;
 
 //              Загрузка трека
                 var loadMusic = function (pl, rand) {
-                    resetPlay();
+                    //resetPlay();
 
                     if (pl != $scope.currentPlaylist) {
                         flagFirst = 0;
                     }
 
-                    if (pl.seeking == 0 || flagFirst == 0) {
-                        $scope.currentPlaylist = pl;
-                        $('.audio .play-control').css('display', 'inline-block');
+                    //if (pl.seeking == 0 || flagFirst == 0) {
+                    //    $scope.currentPlaylist = pl;
+                    //    $('.audio .play-control').css('display', 'inline-block');
+                    //
+                    //    if (rand) {
+                    //        // Если поддерживается localStorage
+                    //        if(window.localStorage!==undefined){
+                    //            if(localStorage.getItem('random_count') === null){
+                    //                var array = [];
+                    //
+                    //                for (var i = 0; i <= pl.countTracks - 1; i++) {
+                    //                    array.push(i);
+                    //                }
+                    //
+                    //                array.sort(function(a,b){ var c = Math.random()*array.length; return c<array.length/2} );
+                    //
+                    //                localStorage.setItem('random_count', array.length - 1);
+                    //                localStorage.setItem('random_current', 0);
+                    //
+                    //                for (var i = 0; i <= array.length - 1; i++) {
+                    //                    localStorage.setItem('random_array'+i, array[i]);
+                    //                }
+                    //
+                    //                pl.numberTrack = localStorage.getItem('random_array' + localStorage.getItem('random_current'));
+                    //            }else{
+                    //                localStorage.setItem('random_current', parseInt(localStorage.getItem('random_current')) + 1);
+                    //                if(localStorage.getItem('random_current') > localStorage.getItem('random_count')){
+                    //                    localStorage.setItem('random_current', 0);
+                    //                    localStorage.removeItem('random_count');
+                    //                }
+                    //                pl.numberTrack = localStorage.getItem('random_array' + localStorage.getItem('random_current'));
+                    //            }
+                    //        }else{
+                    //            pl.numberTrack = Math.floor(Math.random() * (pl.countTracks - 1));
+                    //        }
+                    //    }
+                    //
+                    //    console.log(pl.numberTrack);
 
-                        if (rand) {
-                            // Если поддерживается localStorage
-                            if(window.localStorage!==undefined){
-                                if(localStorage.getItem('random_count') === null){
-                                    var array = [];
-
-                                    for (var i = 0; i <= pl.countTracks - 1; i++) {
-                                        array.push(i);
-                                    }
-
-                                    array.sort(function(a,b){ var c = Math.random()*array.length; return c<array.length/2} );
-
-                                    localStorage.setItem('random_count', array.length - 1);
-                                    localStorage.setItem('random_current', 0);
-
-                                    for (var i = 0; i <= array.length - 1; i++) {
-                                        localStorage.setItem('random_array'+i, array[i]);
-                                    }
-
-                                    pl.numberTrack = localStorage.getItem('random_array' + localStorage.getItem('random_current'));
-                                }else{
-                                    localStorage.setItem('random_current', parseInt(localStorage.getItem('random_current')) + 1);
-                                    if(localStorage.getItem('random_current') > localStorage.getItem('random_count')){
-                                        localStorage.setItem('random_current', 0);
-                                        localStorage.removeItem('random_count');
-                                    }
-                                    pl.numberTrack = localStorage.getItem('random_array' + localStorage.getItem('random_current'));
-                                }
-                            }else{
-                                pl.numberTrack = Math.floor(Math.random() * (pl.countTracks - 1));
-                            }
-                        }
-
-                        console.log(pl.numberTrack);
-
-                        $scope.player.load(pl.audio[pl.numberTrack].file);
-                        $scope.player.seek(pl.seeking);
+                        $scope.player.load(pl.audio);
+                        //$scope.player.seek(pl.seeking);
                         flagFirst = 1;
-                    }
+                    //}
 
                     pl.selected = 1;
                     $scope.player.play();
@@ -145,34 +127,7 @@ angular
 
 //                  Обновление времени проигрывания трека
                     $scope.player.on('timeupdate', function (position, duration) {
-                        pl.seeking = timeToSeconds(position);
-
-                        if ($scope.click == 0) {
-                            var hour = date.getHours();
-
-                            if (hour >= 18 && $scope.currentPlaylist != $scope.audio[0]) {
-//                              препати саунд
-                                $scope.currentPlaylist = $scope.audio[0];
-                                $scope.playMusic($scope.currentPlaylist, 0, 0);
-                            } else if (hour >= 0 && hour < 4 && $scope.currentPlaylist != $scope.audio[1]) {
-//                              найт саунд
-                                $scope.currentPlaylist = $scope.audio[1];
-                                $scope.playMusic($scope.currentPlaylist, 0, 0);
-                            } else if (hour >= 4 && hour < 8 && $scope.currentPlaylist != $scope.audio[2]) {
-//                              морнинг саунд
-                                $scope.currentPlaylist = $scope.audio[2];
-                                $scope.playMusic($scope.currentPlaylist, 0, 0);
-                            } else if (hour >= 8 && hour < 12 && $scope.currentPlaylist != $scope.audio[4]) {
-//                              с 9 до 12
-                                $scope.currentPlaylist = $scope.audio[4];
-                                $scope.playMusic($scope.currentPlaylist, 0, 0);
-                            } else if (hour >= 12 && hour < 18 && $scope.currentPlaylist != $scope.audio[3]) {
-//                              дэй саунд
-                                $scope.currentPlaylist = $scope.audio[3];
-                                $scope.playMusic($scope.currentPlaylist, 0, 0);
-                            }
-                        }
-
+                        //pl.seeking = timeToSeconds(position);
                     });
 
 //                  Окончание проигрывания трека и переключение на следующий трек
@@ -209,46 +164,45 @@ angular
                     }else{
                         $scope.currentPlaylist.selected = 1;
                     }
-                    $scope.player.playPause()
+                    $scope.player.playPause();
                 };
 
 //              Следующий трек в плейлисте
-                $scope.playNext = function () {
-                    $scope.currentPlaylist.seeking = 0;
-                    $scope.currentPlaylist.numberTrack++;
-
-//                  Если треки в плейлисте закончились начинаем играть с первого
-                    if ($scope.currentPlaylist.numberTrack >= $scope.currentPlaylist.countTracks) {
-                        $scope.currentPlaylist.numberTrack = 0;
-                    }
-
-                    loadMusic($scope.currentPlaylist, 0);
-                };
+//                $scope.playNext = function () {
+//                    $scope.currentPlaylist.seeking = 0;
+//                    $scope.currentPlaylist.numberTrack++;
+//
+////                  Если треки в плейлисте закончились начинаем играть с первого
+//                    if ($scope.currentPlaylist.numberTrack >= $scope.currentPlaylist.countTracks) {
+//                        $scope.currentPlaylist.numberTrack = 0;
+//                    }
+//
+//                    loadMusic($scope.currentPlaylist, 0);
+//                };
 
 //              Предыдущий трек в плейлисте
-                $scope.playPrev = function () {
-                    $scope.currentPlaylist.seeking = 0;
-                    $scope.currentPlaylist.numberTrack--;
-
-//                  Если треки в плейлисте закончились начинаем играть с первого
-                    if ($scope.currentPlaylist.numberTrack < 0) {
-                        $scope.currentPlaylist.numberTrack = $scope.currentPlaylist.countTracks - 1;
-                    }
-
-                    loadMusic($scope.currentPlaylist, 0);
-                };
+//                $scope.playPrev = function () {
+//                    $scope.currentPlaylist.seeking = 0;
+//                    $scope.currentPlaylist.numberTrack--;
+//
+////                  Если треки в плейлисте закончились начинаем играть с первого
+//                    if ($scope.currentPlaylist.numberTrack < 0) {
+//                        $scope.currentPlaylist.numberTrack = $scope.currentPlaylist.countTracks - 1;
+//                    }
+//
+//                    loadMusic($scope.currentPlaylist, 0);
+//                };
                 if (!isMobile.iOS()) {
                     $scope.playMusic($scope.currentPlaylist, 0, 1);
                 }else{
                     loadMusic($scope.currentPlaylist, 1);
-                    $scope.currentPlaylist.selected = 0;
+                    //$scope.currentPlaylist.selected = 0;
                 }
-            });
     });
 
 $(function () {
-    setTimeout(function () {
-        $('#9_12').parent().remove();
-    }, 2000);
+    //setTimeout(function () {
+    //    $('#9_12').parent().remove();
+    //}, 2000);
 
 });
