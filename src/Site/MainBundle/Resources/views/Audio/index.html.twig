@@ -4,7 +4,7 @@
         <div class="buttons">
             <div class="wrap_prev">
                 {#<div class="prev" ng-click="playPrev()"></div>#}
-            </div><div class="wrap_play"><div class="play" ng-class="currentPlaylist.selected ? '' : 'pause'" ng-click="player.playPause()"></div></div><div class="wrap_next">
+            </div><div class="wrap_play"><div class="play" ng-class="currentPlaylist.selected ? '' : 'pause'" ng-click="playPause()"></div></div><div class="wrap_next">
                 {#<div class="next" ng-click="playNext()"></div>#}
             </div>
             <div class="name"><span>{[{ currentPlaylist.audio[currentPlaylist.numberTrack].name }]}</span></div>

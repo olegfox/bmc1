@@ -99,21 +99,49 @@ angular
                         $scope.currentPlaylist = pl;
                         $('.audio .play-control').css('display', 'inline-block');
 
-                        var numberTrack;
                         if (rand) {
-                            numberTrack = Math.random() * (pl.countTracks - 1);
-                        } else {
-                            numberTrack = pl.numberTrack;
+                            // Если поддерживается localStorage
+                            if(window.localStorage!==undefined){
+                                if(localStorage.getItem('random_count') === null){
+                                    var array = [];
+
+                                    for (var i = 0; i <= pl.countTracks - 1; i++) {
+                                        array.push(i);
+                                    }
+
+                                    array.sort(function(a,b){ var c = Math.random()*array.length; return c<array.length/2} );
+
+                                    localStorage.setItem('random_count', array.length - 1);
+                                    localStorage.setItem('random_current', 0);
+
+                                    for (var i = 0; i <= array.length - 1; i++) {
+                                        localStorage.setItem('random_array'+i, array[i]);
+                                    }
+
+                                    pl.numberTrack = localStorage.getItem('random_array' + localStorage.getItem('random_current'));
+                                }else{
+                                    localStorage.setItem('random_current', parseInt(localStorage.getItem('random_current')) + 1);
+                                    if(localStorage.getItem('random_current') > localStorage.getItem('random_count')){
+                                        localStorage.setItem('random_current', 0);
+                                        localStorage.removeItem('random_count');
+                                    }
+                                    pl.numberTrack = localStorage.getItem('random_array' + localStorage.getItem('random_current'));
+                                }
+                            }else{
+                                pl.numberTrack = Math.floor(Math.random() * (pl.countTracks - 1));
+                            }
                         }
 
-                        $scope.player.load(pl.audio[numberTrack].file);
+                        console.log(pl.numberTrack);
+
+                        $scope.player.load(pl.audio[pl.numberTrack].file);
                         $scope.player.seek(pl.seeking);
                         flagFirst = 1;
                     }
 
                     pl.selected = 1;
                     $scope.player.play();
-                    $scope.apply();
+                    $scope.$apply();
 
 //                  Обновление времени проигрывания трека
                     $scope.player.on('timeupdate', function (position, duration) {
@@ -175,6 +203,15 @@ angular
                     }
                 };
 
+                $scope.playPause = function (){
+                    if ($scope.currentPlaylist.selected) {
+                        $scope.currentPlaylist.selected = 0;
+                    }else{
+                        $scope.currentPlaylist.selected = 1;
+                    }
+                    $scope.player.playPause()
+                };
+
 //              Следующий трек в плейлисте
                 $scope.playNext = function () {
                     $scope.currentPlaylist.seeking = 0;
@@ -200,9 +237,12 @@ angular
 
                     loadMusic($scope.currentPlaylist, 0);
                 };
-//                if (!isMobile.iOS()) {
-                $scope.playMusic($scope.currentPlaylist, 0, 1);
-//                }
+                if (!isMobile.iOS()) {
+                    $scope.playMusic($scope.currentPlaylist, 0, 1);
+                }else{
+                    loadMusic($scope.currentPlaylist, 1);
+                    $scope.currentPlaylist.selected = 0;
+                }
             });
     });
 
