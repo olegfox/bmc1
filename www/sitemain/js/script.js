@@ -1,7 +1,7 @@
 function checkTime() {
     var hour = (new Date()).getHours(); 
 
-    if(hour > 0 && hour < 8) {
+    if(hour > 21 && hour < 9) {
         $('body').removeClass('dark');
     } else {
         $('body').addClass('dark');
