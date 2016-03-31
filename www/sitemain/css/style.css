@@ -753,3 +753,8 @@ body.dark ul.catalog li .text {
 body.dark .content {
     background: #fff;
 }
+
+body.dark ul.catalog li a {
+    color: #fff;
+    background: #fff;
+}
