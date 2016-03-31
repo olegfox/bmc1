@@ -8,7 +8,7 @@
 {#</div>#}
 <div class="div2">
         <ul class="catalog">
-            {% for image in portfolio %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}">{% if loop.index == 6 %}<div class="text">{{ page.text|raw }}</div>{% else %}<a href="{{ asset(image.photo) }}" ></a><img class="lazy" data-original="{{ image(image.photo).zoomCrop(506, 366) }}" src="{{ asset('sitemain/images/black.jpg') }}" alt="">{% endif %}</li>{% endfor %}
+            {% for image in portfolio %}<li class="box{% if loop.index%4 == 0 %} lst{% endif %}" id="box{{ image.id }}">{% if loop.index == 6 or loop.index == 11 %}<div class="text">{% if loop.index == 6 %}{{ page.text|raw }}{% endif %}{% if loop.index == 11 %}{{ page2.text|raw }}{% endif %}</div>{% else %}<a href="{{ asset(image.photo) }}" ></a><img class="lazy" data-original="{{ image(image.photo).zoomCrop(506, 366) }}" src="{{ asset('sitemain/images/black.jpg') }}" alt="">{% endif %}</li>{% endfor %}
         </ul>
 </div>
 {#<div class="div3">#}

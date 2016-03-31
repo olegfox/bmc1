@@ -18,7 +18,7 @@ angular
     .controller('AudioController', function ($scope, $http, AudioService) {
 //              Плейлисты
                 $scope.audio = {
-                    'audio' : 'http://62.213.99.171:8000/radio_mount',
+                    'audio' : 'http://radio-release.ru:8000/radio_mount',   
                     'selected' : 0
                 };
 
@@ -71,6 +71,7 @@ angular
 
 //              Загрузка трека
                 var loadMusic = function (pl, rand) {
+                    console.log('play');
                     //resetPlay();
 
                     if (pl != $scope.currentPlaylist) {
@@ -122,6 +123,7 @@ angular
                     //}
 
                     pl.selected = 1;
+
                     $scope.player.play();
                     $scope.$apply();
 
@@ -136,6 +138,17 @@ angular
                             $scope.playNext();
                         }, 1000);
                     });
+
+//                  Обработка ошибки загрузки
+//                    $scope.player.on('error', function () {
+//                        console.log(pl.audio);
+//                        setTimeout(function () {
+//                            delete AudioService;
+//                            //$scope.player = AudioService;
+//                            loadMusic($scope.currentPlaylist, 1);
+//                            $scope.currentPlaylist.selected = 0;
+//                        }, 1000);
+//                    });
                 }
 
 //              Выбор радио
@@ -196,7 +209,7 @@ angular
                     $scope.playMusic($scope.currentPlaylist, 0, 1);
                 }else{
                     loadMusic($scope.currentPlaylist, 1);
-                    //$scope.currentPlaylist.selected = 0;
+                    $scope.currentPlaylist.selected = 0;
                 }
     });
 

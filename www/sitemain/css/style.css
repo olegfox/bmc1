@@ -723,3 +723,25 @@ ul.catalog li img{
         padding-right: 0px;
     }
 }
+
+body.dark {
+    background: #fff;
+}
+
+body.dark .audio {
+    background: #fff;
+}
+
+body.dark .audio .logo {
+    -webkit-filter: invert(100%);   
+    filter: invert(100%);
+}
+
+body.dark .audio .play-control {
+    background: #fff;
+}
+
+body.dark .audio .play-control .play {
+    -webkit-filter: invert(100%);   
+    filter: invert(100%);
+}

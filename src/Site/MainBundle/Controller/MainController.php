@@ -15,6 +15,7 @@ class MainController extends Controller
             ->getRepository('SiteMainBundle:Page');
         $pages = $repository_news->findAll();
         $page = $repository_news->findOneBySlug('glavnaya_3');
+        $page2 = $repository_news->findOneBySlug('glavnaya_4');
         $repository_catalog = $this->getDoctrine()
             ->getRepository('SiteMainBundle:Catalog');
         $catalog = $repository_catalog->findAll();
@@ -49,6 +50,7 @@ class MainController extends Controller
         $params = array(
             "pages" => $pages,
             'page' => $page,
+            'page2' => $page2,
             "catalog" => $catalog,
             "factory" => $factory,
             'portfolio' => $imagesPortfolio,

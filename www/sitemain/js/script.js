@@ -1,3 +1,17 @@
+function checkTime() {
+    var hour = (new Date()).getHours(); 
+
+    if(hour > 0 && hour < 8) {
+        $('body').removeClass('dark');
+    } else {
+        $('body').addClass('dark');
+    }
+
+    setTimeout(function() {
+        checkTime();
+    }, 5000);
+}
+
 function scrolling() {
     if ($(document).scrollTop() > 100) {
         $(".navbar-action").css({
@@ -157,3 +171,4 @@ $(function () {
 })
 ;
 
+checkTime();
