@@ -749,3 +749,7 @@ body.dark .audio .play-control .play {
 body.dark ul.catalog li .text {
     color: #000;
 }
+
+body.dark .content {
+    background: #fff;
+}
