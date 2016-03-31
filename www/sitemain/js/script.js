@@ -1,7 +1,7 @@
 function checkTime() {
-    var hour = (new Date()).getHours(); 
+    var hour = (new Date()).getHours();
 
-    if(hour > 21 && hour < 9) {
+    if(hour >= 21 || (hour >= 0 && hour < 9) ) {
         $('body').removeClass('dark');
     } else {
         $('body').addClass('dark');
@@ -75,8 +75,8 @@ $(function () {
             });
         }
     }).each(function () {
-            if (this.complete) $(this).load();
-        });
+        if (this.complete) $(this).load();
+    });
     if ($('.glavnaya-bg').width() < 940) {
         $('.glavnaya-bg img').css({
             "margin-left": "-120px"
