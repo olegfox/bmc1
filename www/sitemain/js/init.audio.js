@@ -18,7 +18,7 @@ angular
     .controller('AudioController', function ($scope, $http, AudioService) {
 //              Плейлисты
                 $scope.audio = {
-                    'audio' : 'http://radio-release.ru:8000/radio_mount',   
+                    'audio' : 'http://109.120.186.66/audio256',   
                     'selected' : 0
                 };
 

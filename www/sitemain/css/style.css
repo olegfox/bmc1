@@ -725,7 +725,7 @@ ul.catalog li img{
 }
 
 body.dark {
-    background: #fff;
+    background: gray;
 }
 
 body.dark .audio {
@@ -747,14 +747,41 @@ body.dark .audio .play-control .play {
 }
 
 body.dark ul.catalog li .text {
+    position: absolute;
     color: #000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+body.dark ul.catalog li .text > div{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+
+body.dark ul.catalog li .text > div > div{
+    display: table-cell;
+    vertical-align: middle;
 }
 
 body.dark .content {
-    background: #fff;
+    background: gray;
 }
 
 body.dark ul.catalog li a {
     color: #fff;
-    background: #fff;
+    background: #000;
+}
+
+canvas {
+    display: none;
+}
+
+body.dark canvas {
+    width: 100%;
+    display: inline;
+    vertical-align: middle;
+    background-color: #fff;
 }
